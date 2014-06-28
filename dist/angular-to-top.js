@@ -46,11 +46,11 @@ app.directive('toTop', ['$document', '$window', function($document, $window) {
 	return {
 		restrict: 'AEC',
 		template: '<div ng-transclude></div>',
-		transclude: true
+		transclude: true,
 		scope: {
 			speed: '@',
 			slide: '@'
-		}
+		},
 		link: link
 	}
 }]);
