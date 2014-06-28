@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+	<title> Angular To Top </title>
+	<script type="text/javascript" src="../dist/angular-to-top.js"></script>
+	<style>
+		.content {
+			display: block;
+			height: 500px;
+			margin-top: 5px;
+			margin-bottom: 5px;
+			background-color: red;
+		}
+	</style>
+</head>
+
+<body>
+	<h1> Oh </h1>
+	<div class="content"></div>
+	<div class="content"></div>
+	<div class="content"></div>
+	<div class="content"></div>
+	<div to-top speed="1000"> Wooaaaah </div>
+	<div to-top slide="false"> Bam </div>
+</body>
+</html>

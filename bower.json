@@ -1,0 +1,10 @@
+{
+  "name": "angular-to-top",
+  "version": "0.1",
+  "description": "This is a basic directive allows you to scroll to the top of the document -- no more, no less."
+  "authors": [
+    "SRPH Kier Borromeo"
+  ],
+  "license": "MIT",
+  "homepage": "http://github.com/srph/angular-to-top"
+}
