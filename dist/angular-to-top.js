@@ -18,7 +18,7 @@
  */
 var app = angular.module('angular-to-top', []);
 
-app.directive('toTop', ['$document', '$window', function($document, $window) {
+app.directive('toTop', [function() {
 	// Animate the screen with the provided speed
 	var animate = function(speed) {
 		angular.element($document).animate({ scrollTop: 0 + 'px' }, speed);
@@ -27,26 +27,35 @@ app.directive('toTop', ['$document', '$window', function($document, $window) {
 	// The link function which allows us to bind
 	// event listeners to the directive
 	var link = function(scope, element, attributes) {
-		scope.speed = scope.speed || 1000;
+		scope.speed = scope.speed || 700;
+		// True by default
 		scope.slide = scope.slide || true;
-		// If the slide option is set to false
-		// We will instead use the $anchorScroll
-		if(!scope.slide) {
-			$window.scrollTo(0,0);
-		}
-
+		
+		// 'click' event listener for the directive
+		// If the element is clicked, start going to the top of the screen
 		element.on('click', function(event) {
 			// Prevent default event from occuring
 			event.preventDefault();
-
-			animate(scope.speed);
+			
+			// If the slide option is set to false, we will adjust
+			// the scrollTop property of the body in the dom to zero
+			// (which is the top)
+			if( ! scope.slide || angular.equals(scope.slide, false) ) {
+				document.getElementsByTagName('body')[0].scrollTop = 0;
+			} else {
+				animate(scope.speed);
+			}
 		})
 	}
 
 	return {
-		restrict: 'AEC',
+		// Restricts use only as an attribute or element
+		restrict: 'AE',
+		// Allows us to scroll to the top of the screen by
+		// simply wrapping the directive around your element
 		template: '<div ng-transclude></div>',
 		transclude: true,
+		// So that..
 		scope: {
 			speed: '@',
 			slide: '@'
